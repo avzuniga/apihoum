@@ -1,25 +1,25 @@
 Crear un servicio REST que:
 
-Permita que la aplicación móvil mande las coordenadas del Houmer
+- Permita que la aplicación móvil mande las coordenadas del Houmer
 Para un día retorne todas las coordenadas de las propiedades que visitó y cuanto tiempo se quedó en cada una
 Para un día retorne todos los momentos en que el houmer se trasladó con una velocidad superior a cierto parámetro
 
 
 Explicacion de la solución:
 
-Un houmer es una persona que va a arrendar o comprar una casa y quiere visitar propiedades
-Un houmer advicer es una persona que se encarga de mostrar las propiedades y agendar las visitas
+- Un houmer es una persona que va a arrendar o comprar una casa y quiere visitar propiedades
+- Un houmer advicer es una persona que se encarga de mostrar las propiedades y agendar las visitas
 
-El houmer abre su aplicacion movil y esta envia los datos de sus coordenadas al endpoint (POST de coordenadas) cada cierto tiempo, enviando latitud,longitud, su usuario y creando asi un timestamp cronologico de su ubicacion
+- El houmer abre su aplicacion movil y esta envia los datos de sus coordenadas al endpoint (POST de coordenadas) cada cierto tiempo, enviando latitud,longitud, su usuario y creando asi un timestamp cronologico de su ubicacion
 
-Al llegar a la propiedad el houmer advicer hace el checkin del houmer a la propiedad y esto marca el tiempo en el que llega. Asi mismo al terminar la visita marca como finalizada y se guarda el tiempo de checkout. La duracion de la visita es la diferencia entre el checkout-checkin.
+- Al llegar a la propiedad el houmer advicer hace el checkin del houmer a la propiedad y esto marca el tiempo en el que llega. Asi mismo al terminar la visita marca como finalizada y se guarda el tiempo de checkout. La duracion de la visita es la diferencia entre el checkout-checkin.
 
-Para obtener las coordenadas y el tiempo exacto en el que la velocidad a la que se movio el houmer son superiores a un valor se filtran todas las coordenadas que estan en ese intervalo de tiempo (dia) De esta forma se va obteniendo velocidades parciales a las cuales el houmer se movio entre una coordenada y otra. 
-#
+- Para obtener las coordenadas y el tiempo exacto en el que la velocidad a la que se movio el houmer son superiores a un valor se filtran todas las coordenadas que estan en ese intervalo de tiempo (dia) De esta forma se va obteniendo velocidades parciales a las cuales el houmer se movio entre una coordenada y otra. 
+
 
 Correr el proyecto:
 
-mysql is running with this setting: (Asegurese de crear una base de datos MYSQL local con esta configuración)
+- mysql is running with this setting: (Asegurese de crear una base de datos MYSQL local con esta configuración)
 
 'DATABASE': 'houm',
 'USER':'houm',
@@ -27,15 +27,17 @@ mysql is running with this setting: (Asegurese de crear una base de datos MYSQL 
 'HOST': 'localhost',
 'PORT': '3306'
 
-pip install -r requirements.txt
+- Cree un env y clone el proyecto
 
-python makemigrations
+- pip install -r requirements.txt
 
-python migrate
+- python makemigrations
 
-python manage.py runserver 8084
+- python migrate
 
-python manage.py createsuperuser
+- python manage.py runserver 8084
+
+- python manage.py createsuperuser
 
 Ahora vamos a probar la solución:
 Para efectos de prueba los endpoints estan desprotegidos

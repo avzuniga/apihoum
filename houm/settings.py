@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-
+from dotenv import dotenv_values
+import os
+config = dotenv_values(".env")
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-%s!3#kb$pksga^fdzwr^dos7+tx_1f-dri%&t9pii@!5w@j87b'
+SECRET_KEY = config['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -78,12 +80,12 @@ WSGI_APPLICATION = 'houm.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'houm',
-        'USER': 'houm',
-        'PASSWORD':'houm',
-        'HOST': 'localhost',
-        'PORT': 3306
+        'ENGINE': config['ENGINE'],
+        'NAME': config['NAME'],
+        'USER': config['USER'],
+        'PASSWORD': config['PASSWORD'],
+        'HOST': config['HOST'],
+        'PORT': config['PORT'],
     }
 }
 
