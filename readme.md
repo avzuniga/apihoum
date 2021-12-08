@@ -35,7 +35,7 @@ Correr el proyecto:
 
 - python migrate
 
-- python manage.py runserver 8084
+- python manage.py runserver 8086
 
 - python manage.py createsuperuser
 
